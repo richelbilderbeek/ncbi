@@ -1,5 +1,7 @@
-script: 
-  - echo "Nothing for now"
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+
+language: R
+cache: packages
 
 after_failure:
   # Download thesis
