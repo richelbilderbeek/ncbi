@@ -10,8 +10,6 @@ protein_ids <- search_protein_ids(protein)
 message("protein_ids: ", paste0(protein_ids, collapse = " "))
 
 sequence <- fetch_sequence_from_protein_id(protein_ids[1])
-message("names(sequence): ", names(sequence))
-message("sequence: ", sequence)
 
 # Get the ID of similar sequences, may take some minutes!
 blastp_result <- bio3d::blast.pdb(sequence)
@@ -20,25 +18,5 @@ similar_subject_ids <- blastp_result$hit.tbl$subjectids
 fasta_text <- fetch_sequences_from_subject_ids(subject_ids = similar_subject_ids)
 
 aligned_fasta_text <- create_msa(fasta_text)
-
-
-# Get the AA sequences from the IDs of similar sequences
-fasta_filename <- tempfile()
-writeLines(text = fasta_text, con = fasta_filename)
-sequences <- Biostrings::readAAStringSet(fasta_filename)
-
-# Multiple sequence alignment
-# Fails: 'object 'msaClustalOmega' of mode 'function' was not found'
-msa <- msa::msa(
-  inputSeqs = sequences,
-  method = "ClustalOmega"
-)
-
-library(msa)
-msa <- msa::msa(
-  inputSeqs = sequences,
-  method = "ClustalOmega"
-)
-
-msa_as_bios2mds_align <- msa::msaConvert(msa, "bios2mds::align")
-bios2mds::export.fasta(msa_as_bios2mds_align, outfile = "~/msa_from_r.aln")
+aligned_fasta_text
+readr::write_lines(x = aligned_fasta_text, file = "~/4ZW9_and_friends.aln")
