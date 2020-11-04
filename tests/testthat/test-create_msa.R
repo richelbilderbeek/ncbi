@@ -172,6 +172,8 @@ test_that("bug report: msa::msaConvert to AAbin format results in incorrect FAST
 
   return()
 
+  # Bug report posted at https://github.com/UBod/msa/issues/7
+
   # Use example code from msa::msaConvert
   filepath <- system.file("examples", "exampleAA.fasta", package = "msa")
   mySeqs <- readAAStringSet(filepath)
