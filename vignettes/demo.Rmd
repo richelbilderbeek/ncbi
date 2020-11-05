@@ -76,6 +76,7 @@ blastp_result <- bio3d::blast.pdb(sequence)
 
 ```{r}
 similar_subject_ids <- blastp_result$hit.tbl$subjectids
+
 ```
 
  * Click on 'Run BLAST', https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE=Proteins&PROGRAM=blastp&BLAST_PROGRAMS=blastp&QUERY=BAA86974.1&LINK_LOC=protein&PAGE_TYPE=BlastSearch
