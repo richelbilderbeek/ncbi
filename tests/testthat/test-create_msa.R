@@ -19,13 +19,24 @@ test_that("use", {
 
 test_that("bug report: bios2mds::export.fasta adds NAs", {
 
+  return()
   # https://github.com/richelbilderbeek/reports/issues/1
   # This is the FASTA text of the protein sequences we work on
+  library(testthat)
+  devtools::install_version("bios2mds", version = "1.2.2", repos = "http://cran.us.r-project.org")
+
+  # Need either
+  #
+  # * R 4.0.0 and bios2mds 1.2.3
+  # * R 3.6.3 and bios2mds 1.2.2
+  #
+
+  # Use an aligned sequence, as suggested by Marie
   fasta_text <- c(
     ">A",
     "TIGSFQFGYNTGVINAPEKIIKEFITKTLTD",
     ">B",
-    "IGSFQFGYNTGVINAPEKIIKEFITKTLT"
+    "-IGSFQFGYNTGVINAPEKIIKEFITKTLT-"
   )
 
   # Save it to a file
@@ -58,12 +69,12 @@ test_that("bug report: bios2mds::export.fasta adds NAs", {
   #
   # x[4]: "IGSFQFGYNTGVINAPEKIIKEFITKTLTNANANANANANANANANANANANANANANANANANANANANANANANANANANANANANANA"
   # y[4]: "IGSFQFGYNTGVINAPEKIIKEFITKTLT"
-  expect_error(
-    expect_equal(
-      readr::read_lines(file = fasta_filename),
-      fasta_text
-    )
+  expect_equal(
+    readr::read_lines(file = fasta_filename),
+    fasta_text
   )
+
+  sessionInfo()
 })
 
 test_that("bug report: msa::msaConvert to seqinr format results in incorrect FASTA file", { # nolint indeed a long title

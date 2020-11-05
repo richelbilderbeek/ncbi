@@ -1,0 +1,88 @@
+---
+title: "demo"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{demo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ncbi)
+set.seed(42)
+```
+
+## Overview
+
+ * Find human membrane proteins
+ * Pick a human membrane protein
+ * Find related proteins
+ * Align the protein sequences
+ * Determine the topology of all protein sequences
+ * Tally the mutations that have the same location in all topologies
+
+## Find human membrane proteins
+
+Either go to [https://www.ncbi.nlm.nih.gov/protein?term=(membrane%20protein)%20AND%20homo%20sapiens%5BPrimary%20Organism%5D](https://www.ncbi.nlm.nih.gov/protein?term=(membrane%20protein)%20AND%20homo%20sapiens%5BPrimary%20Organism%5D) or run:
+
+```{r}
+ids <- search_for_human_membrane_proteins()
+ids
+```
+
+## Pick a human membrane protein
+
+Pick a human membrane protein by clicking it on the
+web interface.
+
+In R, we pick a random one:
+
+```{r}
+id <- sample(x = ids, size = 1)
+id
+```
+
+## Find related proteins
+
+In the web interface, click on 'Run BLAST' to start blastp,
+then run blastp and wait.
+
+In R, we
+
+ * Fetch the protein sequence
+ * Run blastp on it
+
+Fetch the protein sequence from the protein ID:
+
+```{r}
+sequence <- unname(fetch_sequence_from_protein_id(id))
+sequence
+```
+
+
+ Run blastp on the protein sequence
+
+```{r cache=TRUE}
+blastp_result <- bio3d::blast.pdb(sequence)
+```
+
+
+```{r}
+similar_subject_ids <- blastp_result$hit.tbl$subjectids
+```
+
+ * Click on 'Run BLAST', https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE=Proteins&PROGRAM=blastp&BLAST_PROGRAMS=blastp&QUERY=BAA86974.1&LINK_LOC=protein&PAGE_TYPE=BlastSearch
+ * BLAST and wait
+ * Select the proteins that have 80% or more of the max score
+ * Click 'Multiple alignment' to get COBALT multiple sequence alignment
+ * Download the COBALT MSA alignment
+ * Remove sequences that have deletions in the middle of the sequence
+ * Determine the topology of all remaining sequences
+ * Count mutations that have the same location in all topologies
