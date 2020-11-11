@@ -74,7 +74,7 @@ test_that("bug report: bios2mds::export.fasta adds NAs", {
     fasta_text
   )
 
-  sessionInfo()
+  message(paste0(devtools::session_info(), collapse = "\n"))
 })
 
 test_that("bug report: msa::msaConvert to seqinr format results in incorrect FASTA file", { # nolint indeed a long title
