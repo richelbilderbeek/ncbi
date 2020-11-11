@@ -4,6 +4,10 @@ My notes on using the NCBI data, from website and using R.
 
 ## Videos
 
+ * Find SNPs from membrane protein gene names,
+   using only the NCBI web interface 
+   [YouTube](https://youtu.be/7QMUx-X5cM8)
+   [download (.ogv)](http://richelbilderbeek.nl/ncbi_find_snps_from_membrane_protein_gene_names.ogv)
  * From protein name to related protein sequences,
    using both R and the NCBI web interface 
    [YouTube](https://youtu.be/7QMUx-X5cM8)
