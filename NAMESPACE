@@ -2,5 +2,6 @@
 
 export(fetch_sequence_from_protein_id)
 export(fetch_sequences_from_subject_ids)
+export(parse_hgvs)
 export(search_for_human_membrane_proteins)
 export(search_protein_ids)
