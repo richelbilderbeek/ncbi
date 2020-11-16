@@ -25,13 +25,6 @@ click on the 'Gene' database, then search for 'Membrane protein', for the organi
 
 ![](find_gene_names.png)
 
-To do so from R:
-
-```{r}
-# Which search field does the Gene database have?
-rentrez::entrez_db_searchable("gene")
-```
-
 Search for 
 
 ```{r}
@@ -43,26 +36,17 @@ print(paste0("Found ", membrane_protein_result$count, " matches, from the query 
 ```
 Here we find 1123 matches again. We did have to expand the query, by adding `AND alive[prop]` to only show the alive entries, a thing the web interface does by default.
 
+Here we do the same, using the `get_all_human_membrane_protein_gene_ids` function. From there, we get the first six:
 
 ```{r}
 # Get the membrane proteins' gene IDs
-gene_ids <- head(membrane_protein_result$ids)
-# head(membrane_protein_ids)
+gene_ids <- head(get_all_human_membrane_protein_gene_ids())
+gene_ids
+```
+From our gene IDs, we can get the gene names:
 
-# Get the membrane protein gene names
-#membrane_proteins_info <- rentrez::entrez_fetch(
-membrane_proteins_info <- rentrez::entrez_summary(
-  db = "gene", 
-  id = gene_ids,
-  rettype = "xml"
-)
-Sys.sleep(1)
-names(membrane_proteins_info[[1]])
-membrane_proteins_info[[1]]$organism$taxid == 9606
-is_human <- purrr::flatten_lgl(purrr::map(membrane_proteins_info, function(e) e$organism$taxid == 9606))
-testthat::expect_true(all(is_human))
-gene_names <- purrr::flatten_chr(purrr::map(membrane_proteins_info, function(e) e$name))
-gene_names
+```{r}
+gene_names <- get_gene_names_from_human_gene_ids(gene_ids)
 ```
 
 ## From a gene name, find a SNP
@@ -87,23 +71,8 @@ On the NCBI website, use the SNP database and search for the gene name 'TNF', or
 From R, we do:
 
 ```{r}
-tnf_snp_result <- rentrez::entrez_search(
-  db = "SNP", 
-  term = paste0("", gene_name, "[Gene Name]")
-)
-Sys.sleep(1)
-print(
-  paste0(
-    "Got ",  tnf_snp_result$count, " hits ",
-    "for query '", tnf_snp_result$QueryTranslation, "'"
-  )
-)
-```
-
-Note that `rentrez::entrez_search` returns only the first 20 hits by default. These are all 20 SNP IDs:
-
-```{r}
-tnf_snp_result$ids
+snp_ids <- get_snp_ids_from_gene_name(gene_name)
+head(snp_ids)
 ```
 
 ## From a SNP, get the protein sequence and location
@@ -113,7 +82,7 @@ tnf_snp_result$ids
 We'll use the first SNP ID, 1583051968:
 
 ```{r}
-untranslated_tnf_snp_result <- tnf_snp_result$ids[1]
+untranslated_tnf_snp_result <- snp_ids[1]
 testthat::expect_equal("1583051968", untranslated_tnf_snp_result)
 ```
 
@@ -137,7 +106,7 @@ As the report shows no green (nor red, nor blue) band, means that this SNP does 
 We'll use the fifth SNP ID, 1583051188:
 
 ```{r}
-transcripted_tnf_snp_result <- tnf_snp_result$ids[5]
+transcripted_tnf_snp_result <- snp_ids[5]
 testthat::expect_equal("1583051188", transcripted_tnf_snp_result)
 ```
 
@@ -150,7 +119,7 @@ At NCBI website, at [https://www.ncbi.nlm.nih.gov/snp/rs1583051188](https://www.
 We'll use the sevent SNP ID, 1583050033:
 
 ```{r}
-translated_tnf_snp_result <- tnf_snp_result$ids[7]
+translated_tnf_snp_result <- snp_ids[7]
 testthat::expect_equal("1583050033", translated_tnf_snp_result)
 ```
 
@@ -167,25 +136,17 @@ SNP acts on the 196 amino acid.
 Now, to do the same thing from R:
 
 ```{r}
-# Read the SNP info
-json <- jsonlite::fromJSON(paste0("https://api.ncbi.nlm.nih.gov/variation/v0/beta/refsnp/", translated_tnf_snp_result))
-
-# Cheat first
-# Human Genome Variation Society, den Dunnen et al., 2016
-hgvs <- json$primary_snapshot_data$placements_with_allele$alleles[[20]][2,2]
-variation <- parse_hgvs(hgvs)
-print(variation)
+hgvs <- get_snp_variations_in_protein(translated_tnf_snp_result)
+tryCatch(is_hgvs_in_tmh(hgvs), error = function(e) print(e))
 ```
-
-Note that SNP did not cause a mutation in the protein.
-
+The error message is clear: the SNP did not cause a mutation in the protein.
 
 ## From a SNP, that is transcripted and translated into indentical protein
 
 We'll use the eight SNP ID, X1583050033:
 
 ```{r}
-translated_tnf_snp_result <- tnf_snp_result$ids[8]
+translated_tnf_snp_result <- snp_ids[8]
 testthat::expect_equal("1583049783", translated_tnf_snp_result)
 ```
 
@@ -202,15 +163,7 @@ SNP acts on the 144 amino acid.
 Now, to do the same thing from R:
 
 ```{r}
-# Read the SNP info
-url <- paste0("https://api.ncbi.nlm.nih.gov/variation/v0/beta/refsnp/", translated_tnf_snp_result)
-json <- jsonlite::fromJSON(url)
-
-# Cheat first
-# Human Genome Variation Society, den Dunnen et al., 2016
-hgvs <- json$primary_snapshot_data$placements_with_allele$alleles[[20]]$hgvs[2]
-variation <- parse_hgvs(hgvs)
-print(variation)
+hgvs <- get_snp_variations_in_protein(translated_tnf_snp_result)
 ```
 
 Here the protein is actually changed.
@@ -218,46 +171,6 @@ Here the protein is actually changed.
 From this variation, we now measure where in the protein the mutation occurs:
 
 ```{r}
-# Get the protein ID
-protein_info <- rentrez::entrez_search(
-  db = "protein", 
-  term = variation$name,
-  rettype = "xml"
-)
-Sys.sleep(1)
-protein_id <- protein_info$ids  
-# Get the protein sequence as a FASTA text
-protein_fasta <- rentrez::entrez_fetch(
-  db = "protein", 
-  id = protein_id,
-  rettype = "fasta"
-)
-Sys.sleep(1)
-protein_fasta
-```
-Convert it to a multi-line string:
-
-```{r}
-protein_text <- stringr::str_split(protein_fasta, "\n")[[1]]
-protein_text
-```
-
-```{r fig.width=7}
-t <- tibble::tibble(
-  name = stringr::str_sub(protein_text[1], start = 2),
-  topology = pureseqtmr::predict_topology_from_sequence(
-    protein_sequence = paste0(protein_text[-1], collapse = "")
-  )
-)
-pureseqtmr::plot_topology(t)
-```
-
-```{r}
-snp_topology <- stringr::str_sub(t$topology, variation$pos, variation$pos)
-if (snp_topology == 0) {
-  print("SNP acted on AA outside a TMH")  
-} else {
-  testthat::expect_equal(snp_topology, 1)
-  print("SNP acted on AA inside a TMH")  
-}
+hgvs <- get_snp_variations_in_protein(translated_tnf_snp_result)
+is_hgvs_in_tmh(hgvs)
 ```
