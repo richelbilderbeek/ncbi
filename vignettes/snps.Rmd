@@ -25,22 +25,20 @@ click on the 'Gene' database, then search for 'Membrane protein', for the organi
 
 ![](find_gene_names.png)
 
-Search for 
+Search for `"((membrane protein) AND Homo sapiens[ORGN]) AND alive[prop]"`
+in the `Gene` database using the `rentrez` R package:
 
 ```{r}
-# Do an NCBI search
-membrane_protein_result <- rentrez::entrez_search(db = "Gene", term = "((membrane protein) AND Homo sapiens[ORGN]) AND alive[prop]")
-Sys.sleep(1)
-
-print(paste0("Found ", membrane_protein_result$count, " matches, from the query '", membrane_protein_result$QueryTranslation, "'"))
+all_gene_ids <- get_all_human_membrane_protein_gene_ids()
+length(all_gene_ids)
 ```
+
 Here we find 1123 matches again. We did have to expand the query, by adding `AND alive[prop]` to only show the alive entries, a thing the web interface does by default.
 
-Here we do the same, using the `get_all_human_membrane_protein_gene_ids` function. From there, we get the first six:
+From here, we select the first six:
 
 ```{r}
-# Get the membrane proteins' gene IDs
-gene_ids <- head(get_all_human_membrane_protein_gene_ids())
+gene_ids <- head(all_gene_ids)
 gene_ids
 ```
 From our gene IDs, we can get the gene names:
@@ -50,12 +48,6 @@ gene_names <- get_gene_names_from_human_gene_ids(gene_ids)
 ```
 
 ## From a gene name, find a SNP
-
-### Gene name without SNPS
-
-In this example, we'll use the EFGR gene. There will be no (human) SNPs for that gene however, as we'll discover
-
-### Gene name with SNPS
 
 In this example, we'll use the TNF gene.
 
@@ -82,8 +74,9 @@ head(snp_ids)
 We'll use the first SNP ID, 1583051968:
 
 ```{r}
-untranslated_tnf_snp_result <- snp_ids[1]
-testthat::expect_equal("1583051968", untranslated_tnf_snp_result)
+testthat::expect_equal("1583051968", snp_ids[1])
+hgvs <- get_snp_variations_in_protein(snp_ids[1])
+tryCatch(is_hgvs_in_tmh(hgvs), error = function(e) print(e))
 ```
 
 To get the protein sequence using the NCBI website,
@@ -106,8 +99,9 @@ As the report shows no green (nor red, nor blue) band, means that this SNP does 
 We'll use the fifth SNP ID, 1583051188:
 
 ```{r}
-transcripted_tnf_snp_result <- snp_ids[5]
-testthat::expect_equal("1583051188", transcripted_tnf_snp_result)
+testthat::expect_equal("1583051188", snp_ids[5])
+hgvs <- get_snp_variations_in_protein(snp_ids[5])
+tryCatch(is_hgvs_in_tmh(hgvs), error = function(e) print(e))
 ```
 
 At NCBI website, at [https://www.ncbi.nlm.nih.gov/snp/rs1583051188](https://www.ncbi.nlm.nih.gov/snp/rs1583051188) we can see it is transcribed to mRNA (but not to protein):
@@ -119,8 +113,7 @@ At NCBI website, at [https://www.ncbi.nlm.nih.gov/snp/rs1583051188](https://www.
 We'll use the sevent SNP ID, 1583050033:
 
 ```{r}
-translated_tnf_snp_result <- snp_ids[7]
-testthat::expect_equal("1583050033", translated_tnf_snp_result)
+testthat::expect_equal("1583050033", snp_ids[7])
 ```
 
 At [https://www.ncbi.nlm.nih.gov/snp/rs1583050033](https://www.ncbi.nlm.nih.gov/snp/rs1583050033) one can see there is a protein
@@ -136,18 +129,25 @@ SNP acts on the 196 amino acid.
 Now, to do the same thing from R:
 
 ```{r}
-hgvs <- get_snp_variations_in_protein(translated_tnf_snp_result)
+hgvs <- get_snp_variations_in_protein(snp_ids[7])
 tryCatch(is_hgvs_in_tmh(hgvs), error = function(e) print(e))
 ```
+
 The error message is clear: the SNP did not cause a mutation in the protein.
 
 ## From a SNP, that is transcripted and translated into indentical protein
 
-We'll use the eight SNP ID, X1583050033:
+We'll use the eight SNP ID, `1583049783`:
+
+Here the protein is actually changed.
+
+From this variation, we now measure where in the protein the mutation occurs:
 
 ```{r}
-translated_tnf_snp_result <- snp_ids[8]
-testthat::expect_equal("1583049783", translated_tnf_snp_result)
+testthat::expect_equal("1583049783", snp_ids[8])
+hgvs <- get_snp_variations_in_protein(snp_ids[8])
+tryCatch({in_in_tmh <- is_hgvs_in_tmh(hgvs)}, error = function(e) print(e))
+in_in_tmh
 ```
 
 At [https://www.ncbi.nlm.nih.gov/snp/rs1583049783](https://www.ncbi.nlm.nih.gov/snp/rs1583049783) one can see there is a protein
@@ -159,18 +159,3 @@ that the protein is called `NP_000585.2` and that our
 SNP acts on the 144 amino acid.
 
 ![](snp_1583049783_report_zoom.png)
-
-Now, to do the same thing from R:
-
-```{r}
-hgvs <- get_snp_variations_in_protein(translated_tnf_snp_result)
-```
-
-Here the protein is actually changed.
-
-From this variation, we now measure where in the protein the mutation occurs:
-
-```{r}
-hgvs <- get_snp_variations_in_protein(translated_tnf_snp_result)
-is_hgvs_in_tmh(hgvs)
-```

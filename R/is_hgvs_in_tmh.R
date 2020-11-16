@@ -1,6 +1,10 @@
 #' Determine if a HGVS is a mutation in a TMH part of membrane protein
 #' @export
 is_hgvs_in_tmh <- function(hgvs) {
+
+  if (length(hgvs) == 0) {
+    stop("Variation does not have an effect at the protein level")
+  }
   variation <- parse_hgvs(hgvs)
 
   if (variation$from == variation$to) {
