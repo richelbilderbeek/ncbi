@@ -6,6 +6,9 @@
 \usage{
 is_hgvs_in_tmh(hgvs)
 }
+\arguments{
+\item{hgvs}{a variation in HGVS ('Human Genome Variation Society') format}
+}
 \description{
 Determine if a HGVS is a mutation in a TMH part of membrane protein
 }

@@ -1,4 +1,5 @@
 #' Determine if a HGVS is a mutation in a TMH part of membrane protein
+#' @inheritParams default_params_doc
 #' @export
 is_hgvs_in_tmh <- function(hgvs) {
 

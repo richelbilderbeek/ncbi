@@ -75,7 +75,7 @@ We'll use the first SNP ID, 1583051968:
 
 ```{r}
 testthat::expect_equal("1583051968", snp_ids[1])
-hgvs <- get_snp_variations_in_protein(snp_ids[1])
+hgvs <- get_snp_variations_in_protein_from_snp_id(snp_ids[1])
 tryCatch(is_hgvs_in_tmh(hgvs), error = function(e) print(e))
 ```
 
@@ -100,7 +100,7 @@ We'll use the fifth SNP ID, 1583051188:
 
 ```{r}
 testthat::expect_equal("1583051188", snp_ids[5])
-hgvs <- get_snp_variations_in_protein(snp_ids[5])
+hgvs <- get_snp_variations_in_protein_from_snp_id(snp_ids[5])
 tryCatch(is_hgvs_in_tmh(hgvs), error = function(e) print(e))
 ```
 
@@ -129,7 +129,7 @@ SNP acts on the 196 amino acid.
 Now, to do the same thing from R:
 
 ```{r}
-hgvs <- get_snp_variations_in_protein(snp_ids[7])
+hgvs <- get_snp_variations_in_protein_from_snp_id(snp_ids[7])
 tryCatch(is_hgvs_in_tmh(hgvs), error = function(e) print(e))
 ```
 
@@ -145,7 +145,8 @@ From this variation, we now measure where in the protein the mutation occurs:
 
 ```{r}
 testthat::expect_equal("1583049783", snp_ids[8])
-hgvs <- get_snp_variations_in_protein(snp_ids[8])
+hgvs <- get_snp_variations_in_protein_from_snp_id(snp_ids[8])
+in_in_tmh <- NA
 tryCatch({in_in_tmh <- is_hgvs_in_tmh(hgvs)}, error = function(e) print(e))
 in_in_tmh
 ```
