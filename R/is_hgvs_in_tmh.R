@@ -31,7 +31,7 @@ is_hgvs_in_tmh <- function(hgvs) {
   protein_text <- stringr::str_split(protein_fasta, "\n")[[1]]
 
   testthat::expect_true(length(protein_text) >= 2)
-  topology = pureseqtmr::predict_topology_from_sequence(
+  topology <- pureseqtmr::predict_topology_from_sequence(
     protein_sequence = paste0(protein_text[-1], collapse = "")
   )
   if (is.na(stringr::str_match(topology, "1"))) {

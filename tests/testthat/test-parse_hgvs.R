@@ -13,4 +13,3 @@ test_that("use", {
   expect_equal(variation$from, "Gly")
   expect_equal(variation$to, "Asp")
 })
-

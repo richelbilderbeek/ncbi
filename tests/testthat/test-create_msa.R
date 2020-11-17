@@ -23,7 +23,10 @@ test_that("bug report: bios2mds::export.fasta adds NAs", {
   # https://github.com/richelbilderbeek/reports/issues/1
   # This is the FASTA text of the protein sequences we work on
   library(testthat)
-  devtools::install_version("bios2mds", version = "1.2.2", repos = "http://cran.us.r-project.org")
+  devtools::install_version(
+    "bios2mds", version = "1.2.2",
+    repos = "http://cran.us.r-project.org"
+  )
 
   # Need either
   #
@@ -64,11 +67,11 @@ test_that("bug report: bios2mds::export.fasta adds NAs", {
   #
   # Error: readr::read_lines(file = fasta_filename) not equal to `fasta_text`.
   # 2/4 mismatches
-  # x[2]: "TIGSFQFGYNTGVINAPEKIIKEFITKTLTDNANANANANANANANANANANANANANANANANANANANANANANANANANANANANA"
-  # y[2]: "TIGSFQFGYNTGVINAPEKIIKEFITKTLTD"
+  # x[2]: "TIGSFQFGYNTGVINAPEKIIKEFITKTLTDNANANANANANANANANANANANANANANANANANANANANANANANANANANANANA" # nolint this is not commented code
+  # y[2]: "TIGSFQFGYNTGVINAPEKIIKEFITKTLTD"                                                           # nolint this is not commented code
   #
-  # x[4]: "IGSFQFGYNTGVINAPEKIIKEFITKTLTNANANANANANANANANANANANANANANANANANANANANANANANANANANANANANANA"
-  # y[4]: "IGSFQFGYNTGVINAPEKIIKEFITKTLT"
+  # x[4]: "IGSFQFGYNTGVINAPEKIIKEFITKTLTNANANANANANANANANANANANANANANANANANANANANANANANANANANANANANANA" # nolint this is not commented code
+  # y[4]: "IGSFQFGYNTGVINAPEKIIKEFITKTLT"                                                               # nolint this is not commented code
   expect_equal(
     readr::read_lines(file = fasta_filename),
     fasta_text
@@ -187,8 +190,8 @@ test_that("bug report: msa::msaConvert to AAbin format results in incorrect FAST
 
   # Use example code from msa::msaConvert
   filepath <- system.file("examples", "exampleAA.fasta", package = "msa")
-  mySeqs <- readAAStringSet(filepath)
-  myAlignment <- msa(mySeqs)
+  mySeqs <- readAAStringSet(filepath) # nolint no snake_case, as the example follows this style
+  myAlignment <- msa(mySeqs) # nolint no snake_case, as the example follows this style
   msa_as_ape_aabin <- msa::msaConvert(myAlignment, "ape::AAbin")
 
   # Save it to file

@@ -1,6 +1,6 @@
 #' Get all the human membrane protein gene names
 #' @export
-get_all_human_membrane_protein_gene_ids <- function() {
+get_all_human_membrane_protein_gene_ids <- function() { # nolint keep long descriptive function name
   search_result <- rentrez::entrez_search(
     db = "Gene",
     term = "((membrane protein) AND Homo sapiens[ORGN]) AND alive[prop]",

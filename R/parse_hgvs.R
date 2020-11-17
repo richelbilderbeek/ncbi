@@ -15,4 +15,3 @@ parse_hgvs <- function(s) {
   }
   variation
 }
-

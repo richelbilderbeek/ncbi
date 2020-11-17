@@ -16,4 +16,3 @@ test_that("gene that has even more SNPs", {
   snp_ids <- get_snp_ids_from_gene_name(gene_name = "EGFR")
   expect_equal(length(snp_ids), 48836)
 })
-

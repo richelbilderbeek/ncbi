@@ -6,7 +6,7 @@
 #' \url{https://www.ncbi.nlm.nih.gov/protein/advanced}
 #' helps to generate a specific search term
 #' @export
-search_for_human_membrane_proteins <- function() {
+search_for_human_membrane_proteins <- function() { # nolint keep long and descriptive function name
   hits <- rentrez::entrez_search(
     db = "protein",
     term = "(membrane protein) AND Homo Sapiens[Organism]",
