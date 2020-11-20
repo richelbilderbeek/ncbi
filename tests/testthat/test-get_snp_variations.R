@@ -4,9 +4,6 @@ test_that("use", {
 })
 
 test_that("use", {
-  skip("WIP")
-  # Has NULL
   variations <- get_snp_variations(snp_id = "1466623805")
-  expect_true("NP_000585.2:p.Gly144Asp" %in% variations)
+  expect_equal(length(variations), 0)
 })
-

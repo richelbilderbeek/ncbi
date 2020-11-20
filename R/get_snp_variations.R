@@ -1,4 +1,8 @@
 #' Get all variations for a SNP
+#' @return a character vector with variations.
+#' Returns \code{character(0)} for a 'dead SNP' (e.g.
+#' SNP ID \code{1466623805}, see
+#' \url{https://api.ncbi.nlm.nih.gov/variation/v0/beta/refsnp/1466623805})
 #' @export
 get_snp_variations <- function(snp_id) {
   ncbi::check_snp_id(snp_id)

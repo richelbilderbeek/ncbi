@@ -6,6 +6,12 @@
 \usage{
 get_snp_variations(snp_id)
 }
+\value{
+a character vector with variations.
+Returns \code{character(0)} for a 'dead SNP' (e.g.
+SNP ID \code{1466623805}, see
+\url{https://api.ncbi.nlm.nih.gov/variation/v0/beta/refsnp/1466623805})
+}
 \description{
 Get all variations for a SNP
 }

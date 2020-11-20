@@ -24,8 +24,8 @@ get_gene_name_snp_variation_topology <- function(gene_name) { # nolint indeed a 
   for (i in seq_len(nrow(t))) {
     snp_id <- t$snp_id[i]
   }
-  expect_true("snp_id" %in% names(t))
-  expect_true("variation" %in% names(t))
-  expect_true("is_in_tmh" %in% names(t))
+  testthat::expect_true("snp_id" %in% names(t))
+  testthat::expect_true("variation" %in% names(t))
+  testthat::expect_true("is_in_tmh" %in% names(t))
 
 }

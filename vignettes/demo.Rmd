@@ -109,7 +109,6 @@ Download the related proteins' sequences:
 ```{r}
 sequences <- unname(fetch_sequences_from_subject_ids(similar_subject_ids))
 sequences
-
 ```
 
 ## Get the multiple sequence alignment
@@ -117,7 +116,7 @@ sequences
 In the web interface, click 'Multiple alignment' to get COBALT multiple sequence alignment
 
 ```{r}
-
+#
 ```
 
 
