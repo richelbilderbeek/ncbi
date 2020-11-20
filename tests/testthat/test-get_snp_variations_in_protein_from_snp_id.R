@@ -19,3 +19,11 @@ test_that("use, change in DNA, no protein", {
   variations <- get_snp_variations_in_protein_from_snp_id(snp_id = "1583051968")
   expect_equal(0, length(variations))
 })
+
+test_that("abuse", {
+  expect_error(
+    get_snp_variations_in_protein_from_snp_id(
+      c("1", "2")
+    )
+  )
+})

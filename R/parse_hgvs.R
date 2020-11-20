@@ -2,6 +2,13 @@
 #' @return the variation as a list
 #' @export
 parse_hgvs <- function(s) {
+  frame_shift_match <- stringr::str_subset(
+    s, "^.*:p.[A-Z][a-z]{1,2}[[:digit:]]+fs$"
+  )
+  if (length(frame_shift_match) != 0) {
+    stop("Do no accept frame shifts, in sequence '", s, "'")
+  }
+
   m <- stringr::str_match(
     s, "^(.*):p.([A-Z][a-z]{1,2})([[:digit:]]+)(\\=|[A-Z][a-z]{1,2})$")
   variation <- list(

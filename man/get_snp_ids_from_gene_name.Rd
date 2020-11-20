@@ -6,6 +6,9 @@
 \usage{
 get_snp_ids_from_gene_name(gene_name)
 }
+\value{
+a character vector
+}
 \description{
 Get all the SNP IDs for a certain gene
 }

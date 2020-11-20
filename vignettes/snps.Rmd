@@ -147,7 +147,7 @@ From this variation, we now measure where in the protein the mutation occurs:
 testthat::expect_equal("1583049783", snp_ids[8])
 hgvs <- get_snp_variations_in_protein_from_snp_id(snp_ids[8])
 in_in_tmh <- NA
-tryCatch({in_in_tmh <- is_hgvs_in_tmh(hgvs)}, error = function(e) print(e))
+tryCatch(in_in_tmh <- is_hgvs_in_tmh(hgvs), error = function(e) print(e))
 in_in_tmh
 ```
 

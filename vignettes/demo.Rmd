@@ -78,7 +78,7 @@ Show the results:
 
 ```{r}
 t <- blastp_result$hit.tbl
-t <- t[order(-t$identity),] # Best results first
+t <- t[order(-t$identity), ] # Best results first
 knitr::kable(head(t))
 ```
 
@@ -91,7 +91,7 @@ related sequences should differ only a couple of amino acids.
 For now, we keep all...
 
 ```{r}
-t <- t[order(-t$identity),] # Best results first
+t <- t[order(-t$identity), ] # Best results first
 knitr::kable(head(t))
 ```
 

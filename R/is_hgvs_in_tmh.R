@@ -6,7 +6,7 @@ is_hgvs_in_tmh <- function(hgvs) {
   if (length(hgvs) == 0) {
     stop("Variation does not have an effect at the protein level")
   }
-  variation <- parse_hgvs(hgvs)
+  variation <- ncbi::parse_hgvs(hgvs)
 
   if (variation$from == variation$to) {
     stop("Variation '", hgvs, "' does not change an amino acid")

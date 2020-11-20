@@ -13,3 +13,10 @@ test_that("use", {
   expect_equal(variation$from, "Gly")
   expect_equal(variation$to, "Asp")
 })
+
+test_that("use", {
+  expect_error(
+    parse_hgvs(s = "NP_000585.2:p.Pro84fs"),
+    "Do no accept frame shifts"
+  )
+})
