@@ -1,4 +1,4 @@
 test_that("use", {
   gene_ids <- get_all_human_membrane_protein_gene_ids()
-  expect_equal(length(gene_names), 1123)
+  expect_equal(length(gene_ids), 1125)
 })
