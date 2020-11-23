@@ -1,6 +1,7 @@
 #' Fetch the sequence from a protein ID
 #'
 #' Fetch the protein sequence using a protein ID
+#' @inheritParams default_params_doc
 #' @return text that can be saved as a FASTA file
 #' @export
 fetch_sequences_from_subject_ids <- function(subject_ids) { # nolint keep long descriptive function name

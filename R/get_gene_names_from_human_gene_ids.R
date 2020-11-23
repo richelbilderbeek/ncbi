@@ -1,5 +1,6 @@
 #' From a human gene ID, get the gene name.
 #' This function checks if the gene is indeed fror a human
+#' @inheritParams default_params_doc
 #' @export
 get_gene_names_from_human_gene_ids <- function(gene_ids) { # nolint keep long descriptive function name
   membrane_proteins_info <- rentrez::entrez_summary(

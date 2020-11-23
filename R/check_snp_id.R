@@ -1,4 +1,5 @@
 #' Check a SNP ID
+#' @inheritParams default_params_doc
 #' @export
 check_snp_id <- function(snp_id) {
   if (length(snp_id) != 1 || is.na(snp_id)) {

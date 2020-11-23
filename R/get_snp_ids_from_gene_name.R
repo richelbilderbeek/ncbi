@@ -1,4 +1,5 @@
 #' Get all the SNP IDs for a certain gene
+#' @inheritParams default_params_doc
 #' @return a character vector
 #' @export
 get_snp_ids_from_gene_name <- function(gene_name) {

@@ -11,10 +11,22 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Imports:
+    ape,
+    bios2mds,
+    Biostrings,
+    jsonlite,
+    msa,
+    pureseqtmr,
+    purrr,
+    readr,
+    rentrez,
+    seqinr,
+    stringr,
+    tibble
 Suggests:
     bio3d,
     knitr,
-    rentrez,
     rmarkdown,
     testthat
 VignetteBuilder: knitr

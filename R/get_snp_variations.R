@@ -1,4 +1,5 @@
 #' Get all variations for a SNP
+#' @inheritParams default_params_doc
 #' @return a character vector with variations.
 #' Returns \code{character(0)} for a 'dead SNP' (e.g.
 #' SNP ID \code{1466623805}, see

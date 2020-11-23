@@ -1,4 +1,5 @@
 #' Parse a HGVS variation description
+#' @param s string in HVGS format to be parsed
 #' @return the variation as a list
 #' @export
 parse_hgvs <- function(s) {

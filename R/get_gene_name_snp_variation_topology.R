@@ -1,4 +1,5 @@
 #' From a gene name, get the SNP ID, variation and topology
+#' @inheritParams default_params_doc
 #' @export
 get_gene_name_snp_variation_topology <- function(gene_name) { # nolint indeed a long and descriptive function name
   stop("ABANDON, split up")

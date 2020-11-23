@@ -6,6 +6,9 @@
 \usage{
 parse_hgvs(s)
 }
+\arguments{
+\item{s}{string in HVGS format to be parsed}
+}
 \value{
 the variation as a list
 }

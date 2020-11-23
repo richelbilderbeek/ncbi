@@ -1,6 +1,7 @@
 #' Fetch the sequence from a protein ID
 #'
 #' Fetch the protein sequence using a protein ID
+#' @inheritParams default_params_doc
 #' @export
 fetch_sequence_from_protein_id <- function(protein_id) {
   fasta_raw <- rentrez::entrez_fetch(
