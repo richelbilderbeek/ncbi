@@ -14,10 +14,8 @@ RoxygenNote: 7.1.1
 Imports:
     ape,
     bios2mds,
-    Biostrings,
     devtools,
     jsonlite,
-    msa,
     Peptides,
     pureseqtmr,
     purrr,

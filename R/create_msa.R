@@ -1,30 +1,18 @@
-create_msa <- function(fasta_text) {
-  # Get the AA sequences from the IDs of similar sequences
+#' Create a multiple sequence alignment using COBALT
+#' @inheritParams cobaltr::run_cobalt
+#' @return the FASTA text of the MSA
+create_msa <- function(
+  fasta_text,
+  cobalt_options = cobaltr::create_cobalt_options(),
+  cobalt_folder = cobaltr::get_default_cobalt_folder()
+) {
   fasta_filename <- tempfile()
   writeLines(text = fasta_text, con = fasta_filename)
 
-
-  ape::clustalomega(
-    ape::read.FASTA(fasta_filename, type = "AA"),
-    file = fasta_filename
+  cobaltr::run_cobalt(
+    fasta_filename = fasta_filename,
+    cobalt_options = cobalt_options,
+    cobalt_folder = cobalt_folder
   )
 
-  if (1 == 2) {
-    # Cannot convert output to a FASTA file, due to three separate bugs
-
-    sequences <- Biostrings::readAAStringSet(fasta_filename)
-    library(msa)
-    msa <- msa::msa(
-      inputSeqs = sequences,
-      method = "ClustalOmega"
-    )
-  }
-  if (1 == 2) {
-    # msa::msaConvert to AAbin format results in incorrect FASTA file
-    # https://github.com/UBod/msa/issues/7
-    msa_as_ape_aabin <- msa::msaConvert(msa, "ape::AAbin")
-    ape::write.FASTA(x = msa_as_ape_aabin, file = fasta_filename)
-  }
-  readLines(fasta_filename)
-  readr::read_lines(file = fasta_filename)
 }
