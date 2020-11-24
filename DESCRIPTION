@@ -13,7 +13,6 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports:
     ape,
-    bios2mds,
     devtools,
     jsonlite,
     Peptides,
