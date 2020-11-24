@@ -11,7 +11,7 @@ r_github_packages:
   - richelbilderbeek/cobaltr
 
 before_script:
-  - Rscript -e 'devtools::install_github("richelbilderbeek/cobalt")'
+  - Rscript -e 'devtools::install_github("richelbilderbeek/cobaltr")'
   - Rscript -e 'cobaltr::install_cobalt()'
 
 script:
