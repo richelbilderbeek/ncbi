@@ -1,4 +1,5 @@
 test_that("use", {
+  if (!cobaltr::is_cobalt_installed()) return()
   fasta_text <- c(
     ">A",
     "TIGSFQFGYNTGVINAPEKIIKEFITKTLTD",

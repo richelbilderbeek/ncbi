@@ -10,6 +10,10 @@ r_github_packages:
   - MangoTheCat/goodpractice
   - richelbilderbeek/cobaltr
 
+before_script:
+  - Rscript -e 'devtools::install_github("richelbilderbeek/cobalt")'
+  - Rscript -e 'cobaltr::install_cobalt()'
+
 script:
   # Do the actual build
   - travis_wait 60 R CMD build .
