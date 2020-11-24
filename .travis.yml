@@ -9,9 +9,6 @@ r_github_packages:
   - jimhester/lintr
   - MangoTheCat/goodpractice
 
-bioc_packages:
-  - msa
-
 script:
   # Do the actual build
   - travis_wait 60 R CMD build .
