@@ -6,6 +6,9 @@
 \usage{
 get_snp_ids_from_gene_name(gene_name)
 }
+\arguments{
+\item{gene_name}{name of a gene}
+}
 \value{
 a character vector
 }

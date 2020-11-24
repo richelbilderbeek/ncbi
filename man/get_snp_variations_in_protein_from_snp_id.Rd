@@ -7,6 +7,9 @@ Returns \code{character(0)} if there are none}
 \usage{
 get_snp_variations_in_protein_from_snp_id(snp_id)
 }
+\arguments{
+\item{snp_id}{the ID of a SNP}
+}
 \description{
 From a SNP id, get the variations at the protein level.
 Returns \code{character(0)} if there are none

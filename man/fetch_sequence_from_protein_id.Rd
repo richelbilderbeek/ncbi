@@ -6,6 +6,9 @@
 \usage{
 fetch_sequence_from_protein_id(protein_id)
 }
+\arguments{
+\item{protein_id}{ID of a protein}
+}
 \description{
 Fetch the protein sequence using a protein ID
 }

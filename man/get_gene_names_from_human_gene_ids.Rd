@@ -7,6 +7,9 @@ This function checks if the gene is indeed fror a human}
 \usage{
 get_gene_names_from_human_gene_ids(gene_ids)
 }
+\arguments{
+\item{gene_ids}{one or more IDs of a gene}
+}
 \description{
 From a human gene ID, get the gene name.
 This function checks if the gene is indeed fror a human

@@ -6,6 +6,9 @@
 \usage{
 check_snp_id(snp_id)
 }
+\arguments{
+\item{snp_id}{the ID of a SNP}
+}
 \description{
 Check a SNP ID
 }

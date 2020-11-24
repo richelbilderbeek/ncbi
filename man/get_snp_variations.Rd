@@ -6,6 +6,9 @@
 \usage{
 get_snp_variations(snp_id)
 }
+\arguments{
+\item{snp_id}{the ID of a SNP}
+}
 \value{
 a character vector with variations.
 Returns \code{character(0)} for a 'dead SNP' (e.g.

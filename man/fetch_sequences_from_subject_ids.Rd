@@ -6,6 +6,9 @@
 \usage{
 fetch_sequences_from_subject_ids(subject_ids)
 }
+\arguments{
+\item{subject_ids}{one of more IDs of a subject}
+}
 \value{
 text that can be saved as a FASTA file
 }

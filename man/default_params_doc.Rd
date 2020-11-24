@@ -5,10 +5,34 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(hgvs, verbose)
+default_params_doc(
+  fasta_file,
+  fasta_text,
+  gene_ids,
+  gene_name,
+  hgvs,
+  protein_id,
+  snp_id,
+  subject_ids,
+  verbose
+)
 }
 \arguments{
+\item{fasta_file}{name of a FASTA file}
+
+\item{fasta_text}{text in the same format as a FASTA file}
+
+\item{gene_ids}{one or more IDs of a gene}
+
+\item{gene_name}{name of a gene}
+
 \item{hgvs}{a variation in HGVS ('Human Genome Variation Society') format}
+
+\item{protein_id}{ID of a protein}
+
+\item{snp_id}{the ID of a SNP}
+
+\item{subject_ids}{one of more IDs of a subject}
 
 \item{verbose}{set to TRUE for more output}
 }
