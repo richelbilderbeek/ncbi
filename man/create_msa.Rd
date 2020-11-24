@@ -11,6 +11,8 @@ create_msa(
 )
 }
 \arguments{
+\item{fasta_text}{text of a FASTA file}
+
 \item{cobalt_options}{a set of COBALT options,
 as can be created by \link[cobaltr]{create_cobalt_options}}
 

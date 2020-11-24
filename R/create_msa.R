@@ -1,4 +1,5 @@
 #' Create a multiple sequence alignment using COBALT
+#' @param fasta_text text of a FASTA file
 #' @inheritParams cobaltr::run_cobalt
 #' @return the FASTA text of the MSA
 create_msa <- function(
