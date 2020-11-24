@@ -71,15 +71,19 @@ In the web interface, click on 'Run BLAST', https://blast.ncbi.nlm.nih.gov/Blast
 Within R, run blastp by calling `bio3d::blast.pdb` on the protein sequence
 
 ```{r cache=TRUE}
-blastp_result <- bio3d::blast.pdb(sequence)
+if (1 == 2) {
+  blastp_result <- bio3d::blast.pdb(sequence)
+}
 ```
 
 Show the results:
 
 ```{r}
-t <- blastp_result$hit.tbl
-t <- t[order(-t$identity), ] # Best results first
-knitr::kable(head(t))
+if (1 == 2) {
+  t <- blastp_result$hit.tbl
+  t <- t[order(-t$identity), ] # Best results first
+  knitr::kable(head(t))
+}
 ```
 
 ## Select the proteins that have 80% or more of the max score
@@ -91,8 +95,11 @@ related sequences should differ only a couple of amino acids.
 For now, we keep all...
 
 ```{r}
-t <- t[order(-t$identity), ] # Best results first
-knitr::kable(head(t))
+if (1 == 2) {
+
+  t <- t[order(-t$identity), ] # Best results first
+  knitr::kable(head(t))
+}
 ```
 
  
@@ -100,15 +107,19 @@ knitr::kable(head(t))
 Get the IDs of the hits:
 
 ```{r}
-similar_subject_ids <- t$subjectids
-similar_subject_ids
+if (1 == 2) {
+  similar_subject_ids <- t$subjectids
+  similar_subject_ids
+}
 ```
 
 Download the related proteins' sequences:
 
 ```{r}
-sequences <- unname(fetch_sequences_from_subject_ids(similar_subject_ids))
-sequences
+if (1 == 2) {
+  sequences <- unname(fetch_sequences_from_subject_ids(similar_subject_ids))
+  sequences
+}
 ```
 
 ## Get the multiple sequence alignment
