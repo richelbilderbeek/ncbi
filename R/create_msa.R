@@ -25,16 +25,6 @@ create_msa <- function(fasta_text) {
     msa_as_ape_aabin <- msa::msaConvert(msa, "ape::AAbin")
     ape::write.FASTA(x = msa_as_ape_aabin, file = fasta_filename)
   }
-  if (1 == 2) {
-    # msa::msaConvert to seqinr format results in incorrect FASTA file
-    # https://github.com/UBod/msa/issues/6
-    msa_as_seqinr_alignment <- msa::msaConvert(msa, "seqinr::alignment")
-    seqinr::write.fasta(
-      sequences = msa_as_seqinr_alignment$seq,
-      names = names(sequences),
-      file.out = fasta_filename
-    )
-  }
   readLines(fasta_filename)
   readr::read_lines(file = fasta_filename)
 }
