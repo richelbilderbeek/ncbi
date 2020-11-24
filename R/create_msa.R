@@ -35,12 +35,6 @@ create_msa <- function(fasta_text) {
       file.out = fasta_filename
     )
   }
-  if (1 == 3) {
-    # bios2mds::export.fasta adds NAs for short sequences
-    # Bugreport at https://github.com/richelbilderbeek/reports/issues/1
-    msa_as_bios2mds_align <- msa::msaConvert(msa, "bios2mds::align")
-    bios2mds::export.fasta(msa_as_bios2mds_align, outfile = fasta_filename)
-  }
   readLines(fasta_filename)
   readr::read_lines(file = fasta_filename)
 }
