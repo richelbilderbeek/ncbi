@@ -7,6 +7,8 @@ Branch    |[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)        
 
 My notes on using the NCBI data, from website and using R.
 
+![](man/figures/prediction_versus_reality.png)
+
 ## Videos
 
  * Find SNPs from membrane protein gene names,
@@ -19,6 +21,7 @@ My notes on using the NCBI data, from website and using R.
    [download (.ogv)](http://richelbilderbeek.nl/ncbi_protein_name_to_related_msa_in_r_and_web_interface.ogv)
  * From protein name to related protein sequences,
    using only the NCBI web interface 
+   [R script](scripts/from_protein_to_msa_of_related_proteins.R)
    [YouTube](https://youtu.be/TGA6_4i-xTo)
    [download (.ogv)](http://richelbilderbeek.nl/ncbi_protein_name_to_related_msa.ogv)
 
