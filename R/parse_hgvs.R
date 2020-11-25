@@ -3,6 +3,7 @@
 #' @return the variation as a list
 #' @export
 parse_hgvs <- function(s) {
+  testthat::expect_true(length(s) == 1)
   frame_shift_match <- stringr::str_subset(
     s, "^.*:p.[A-Z][a-z]{1,2}[[:digit:]]+fs$"
   )
