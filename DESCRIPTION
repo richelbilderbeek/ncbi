@@ -23,7 +23,8 @@ Imports:
     rentrez,
     seqinr,
     stringr,
-    tibble
+    tibble,
+    tmhmm
 Suggests:
     bio3d,
     knitr,
