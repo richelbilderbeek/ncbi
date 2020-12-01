@@ -19,4 +19,11 @@ test_that("use", {
     parse_hgvs(s = "NP_000585.2:p.Pro84fs"),
     "Do no accept frame shifts"
   )
+
+  expect_error(
+    parse_hgvs(s = "NP_068743.3:p.Ter846TyrextTer?"),
+    "Do no accept extensions"
+  )
+
+
 })

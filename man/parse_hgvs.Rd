@@ -15,3 +15,6 @@ the variation as a list
 \description{
 Parse a HGVS variation description
 }
+\note{
+see \url{http://varnomen.hgvs.org/} for the HGVS format
+}

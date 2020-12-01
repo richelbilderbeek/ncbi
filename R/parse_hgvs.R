@@ -1,5 +1,6 @@
 #' Parse a HGVS variation description
 #' @param s string in HVGS format to be parsed
+#' @note see \url{http://varnomen.hgvs.org/} for the HGVS format
 #' @return the variation as a list
 #' @export
 parse_hgvs <- function(s) {
@@ -9,6 +10,12 @@ parse_hgvs <- function(s) {
   )
   if (length(frame_shift_match) != 0) {
     stop("Do no accept frame shifts, in sequence '", s, "'")
+  }
+  extensions_shift_match <- stringr::str_subset(
+    s, "^.*:p\\..*ext.*$"
+  )
+  if (length(extensions_shift_match) != 0) {
+    stop("Do no accept extensions, in sequence '", s, "'")
   }
 
   m <- stringr::str_match(
