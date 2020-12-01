@@ -25,5 +25,8 @@ test_that("use", {
     "Do no accept extensions"
   )
 
-
+  expect_error(
+    parse_hgvs(s = "NP_001172112.1:p.Arg249delinsThrGluArgTer"),
+    "Do no accept delins"
+  )
 })
