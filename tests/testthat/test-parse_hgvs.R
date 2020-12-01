@@ -37,5 +37,10 @@ test_that("use", {
     "Do no accept insertions"
   )
 
+  expect_error(
+    parse_hgvs(s = "NP_001180552.1:p.Pro27del"),
+    "Do no accept deletions"
+  )
+
 
 })

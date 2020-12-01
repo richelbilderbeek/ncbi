@@ -23,6 +23,12 @@ parse_hgvs <- function(s) {
   if (length(ins_match) != 0) {
     stop("Do no accept insertions, in sequence '", s, "'")
   }
+  del_match <- stringr::str_subset(
+    s, "^.*:p\\..*del$"
+  )
+  if (length(del_match) != 0) {
+    stop("Do no accept deletions, in sequence '", s, "'")
+  }
   delins_match <- stringr::str_subset(
     s, "^.*:p\\..*delins.*$"
   )
