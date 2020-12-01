@@ -29,4 +29,13 @@ test_that("use", {
     parse_hgvs(s = "NP_001172112.1:p.Arg249delinsThrGluArgTer"),
     "Do no accept delins"
   )
+
+  expect_error(
+    parse_hgvs(
+      s = "NP_055640.2:p.Leu2235_Leu2236insArgLeuGlyAlaGlnArgProAspThr"
+    ),
+    "Do no accept insertions"
+  )
+
+
 })

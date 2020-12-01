@@ -17,6 +17,12 @@ parse_hgvs <- function(s) {
   if (length(extensions_shift_match) != 0) {
     stop("Do no accept extensions, in sequence '", s, "'")
   }
+  ins_match <- stringr::str_subset(
+    s, "^.*:p\\..*ins.*$"
+  )
+  if (length(ins_match) != 0) {
+    stop("Do no accept insertions, in sequence '", s, "'")
+  }
   delins_match <- stringr::str_subset(
     s, "^.*:p\\..*delins.*$"
   )
