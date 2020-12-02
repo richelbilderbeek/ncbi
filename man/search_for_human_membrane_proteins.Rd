@@ -4,7 +4,7 @@
 \alias{search_for_human_membrane_proteins}
 \title{Get the IDs of human membrane proteins.}
 \usage{
-search_for_human_membrane_proteins()
+search_for_human_membrane_proteins(verbose = FALSE)
 }
 \description{
 Get the IDs of human membrane proteins.

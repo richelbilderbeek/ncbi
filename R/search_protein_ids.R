@@ -9,13 +9,17 @@
 #' \url{https://www.ncbi.nlm.nih.gov/protein/advanced}
 #' helps to generate a specific search term
 #' @export
-search_protein_ids <- function(accession) {
+search_protein_ids <- function(
+  accession,
+  verbose = FALSE
+) {
   term <- paste0("(", accession, "[Accession]) AND Homo Sapiens[Organism]")
 
   hits <- rentrez::entrez_search(
     db = "protein",
     term = term,
-    rettype = "fasta"
+    rettype = "fasta",
+    config = httr::config(verbose = verbose)
   )
   hits
   hits$ids

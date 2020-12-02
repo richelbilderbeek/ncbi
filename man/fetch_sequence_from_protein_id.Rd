@@ -4,10 +4,12 @@
 \alias{fetch_sequence_from_protein_id}
 \title{Fetch the sequence from a protein ID}
 \usage{
-fetch_sequence_from_protein_id(protein_id)
+fetch_sequence_from_protein_id(protein_id, verbose = FALSE)
 }
 \arguments{
 \item{protein_id}{ID of a protein}
+
+\item{verbose}{set to TRUE for more output}
 }
 \description{
 Fetch the protein sequence using a protein ID

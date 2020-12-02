@@ -4,7 +4,7 @@
 \alias{search_protein_ids}
 \title{Search for a protein its ID}
 \usage{
-search_protein_ids(accession)
+search_protein_ids(accession, verbose = FALSE)
 }
 \arguments{
 \item{accession}{protein accession (?), for example, \code{4ZW9}.}

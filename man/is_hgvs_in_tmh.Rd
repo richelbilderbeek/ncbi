@@ -4,10 +4,12 @@
 \alias{is_hgvs_in_tmh}
 \title{Determine if a HGVS is a mutation in a TMH part of membrane protein}
 \usage{
-is_hgvs_in_tmh(hgvs)
+is_hgvs_in_tmh(hgvs, verbose = FALSE)
 }
 \arguments{
 \item{hgvs}{a variation in HGVS ('Human Genome Variation Society') format}
+
+\item{verbose}{set to TRUE for more output}
 }
 \description{
 Determine if a HGVS is a mutation in a TMH part of membrane protein

@@ -24,3 +24,12 @@ test_that("use", {
     sum(stringr::str_count(sequences, regexp))
   )
 })
+
+test_that("verbose error", {
+  Sys.sleep(1)
+  expect_error(
+    fetch_sequences_from_protein_ids(
+      protein_ids = "NP_123.4",
+    )
+  )
+})

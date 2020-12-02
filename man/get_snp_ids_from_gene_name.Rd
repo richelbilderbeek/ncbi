@@ -4,10 +4,12 @@
 \alias{get_snp_ids_from_gene_name}
 \title{Get all the SNP IDs for a certain gene}
 \usage{
-get_snp_ids_from_gene_name(gene_name)
+get_snp_ids_from_gene_name(gene_name, verbose = FALSE)
 }
 \arguments{
 \item{gene_name}{name of a gene}
+
+\item{verbose}{set to TRUE for more output}
 }
 \value{
 a character vector

@@ -5,10 +5,10 @@
 \title{From a human gene ID, get the gene name.
 This function checks if the gene is indeed fror a human}
 \usage{
-get_gene_names_from_human_gene_ids(gene_ids)
+get_gene_names_from_human_gene_ids(verbose = FALSE)
 }
 \arguments{
-\item{gene_ids}{one or more IDs of a gene}
+\item{verbose}{set to TRUE for more output}
 }
 \description{
 From a human gene ID, get the gene name.

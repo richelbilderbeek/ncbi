@@ -2,11 +2,15 @@
 #' @inheritParams default_params_doc
 #' @return a character vector
 #' @export
-get_snp_ids_from_gene_name <- function(gene_name) {
+get_snp_ids_from_gene_name <- function(
+  gene_name,
+  verbose = FALSE
+) {
   search_result <- rentrez::entrez_search(
     db = "SNP",
     term = paste0("", gene_name, "[Gene Name]"),
-    retmax = 1000001 # Prevent the change to scientific notation
+    retmax = 1000001, # Prevent the change to scientific notation
+    config = httr::config(verbose = verbose)
   )
   Sys.sleep(1)
   # Check that we indeed have all results

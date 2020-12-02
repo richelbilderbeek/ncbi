@@ -4,10 +4,12 @@
 \alias{fetch_sequences_from_subject_ids}
 \title{Fetch the sequence from a protein ID}
 \usage{
-fetch_sequences_from_subject_ids(subject_ids)
+fetch_sequences_from_subject_ids(subject_ids, verbose = FALSE)
 }
 \arguments{
 \item{subject_ids}{one of more IDs of a subject}
+
+\item{verbose}{set to TRUE for more output}
 }
 \value{
 text that can be saved as a FASTA file

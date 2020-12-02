@@ -11,3 +11,12 @@ test_that("use", {
     regexp = regexp
   )
 })
+
+test_that("verbose error", {
+  Sys.sleep(1)
+  expect_error(
+    fetch_sequence_from_protein_id(
+      protein_id = "NP_123.4"
+    )
+  )
+})

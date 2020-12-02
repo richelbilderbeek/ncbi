@@ -4,7 +4,10 @@
 \alias{get_all_human_membrane_protein_gene_ids}
 \title{Get all the human membrane protein gene names}
 \usage{
-get_all_human_membrane_protein_gene_ids()
+get_all_human_membrane_protein_gene_ids(verbose = FALSE)
+}
+\arguments{
+\item{verbose}{set to TRUE for more output}
 }
 \description{
 Get all the human membrane protein gene names

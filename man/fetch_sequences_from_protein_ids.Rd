@@ -4,7 +4,10 @@
 \alias{fetch_sequences_from_protein_ids}
 \title{Fetch the sequence from one or more protein ID}
 \usage{
-fetch_sequences_from_protein_ids(protein_ids)
+fetch_sequences_from_protein_ids(protein_ids, verbose = FALSE)
+}
+\arguments{
+\item{verbose}{set to TRUE for more output}
 }
 \value{
 a character vector with protein sequences,

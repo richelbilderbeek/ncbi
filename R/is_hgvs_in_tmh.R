@@ -1,7 +1,10 @@
 #' Determine if a HGVS is a mutation in a TMH part of membrane protein
 #' @inheritParams default_params_doc
 #' @export
-is_hgvs_in_tmh <- function(hgvs) {
+is_hgvs_in_tmh <- function(
+  hgvs,
+  verbose = FALSE
+) {
 
   if (length(hgvs) == 0) {
     stop("Variation does not have an effect at the protein level")
@@ -16,7 +19,8 @@ is_hgvs_in_tmh <- function(hgvs) {
   protein_info <- rentrez::entrez_search(
     db = "protein",
     term = variation$name,
-    rettype = "xml"
+    rettype = "xml",
+    config = httr::config(verbose = verbose)
   )
   Sys.sleep(1)
   protein_id <- protein_info$ids
@@ -24,7 +28,8 @@ is_hgvs_in_tmh <- function(hgvs) {
   protein_fasta <- rentrez::entrez_fetch(
     db = "protein",
     id = protein_id,
-    rettype = "fasta"
+    rettype = "fasta",
+    config = httr::config(verbose = verbose)
   )
   Sys.sleep(1)
   testthat::expect_equal(1, length(protein_fasta))

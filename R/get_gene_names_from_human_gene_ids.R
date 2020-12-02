@@ -2,11 +2,14 @@
 #' This function checks if the gene is indeed fror a human
 #' @inheritParams default_params_doc
 #' @export
-get_gene_names_from_human_gene_ids <- function(gene_ids) { # nolint keep long descriptive function name
+get_gene_names_from_human_gene_ids <- function(# nolint keep long descriptive function name
+  verbose = FALSE
+) {
   membrane_proteins_info <- rentrez::entrez_summary(
     db = "gene",
     id = gene_ids,
-    rettype = "xml"
+    rettype = "xml",
+    config = httr::config(verbose = verbose)
   )
   Sys.sleep(1)
   is_human <- purrr::flatten_lgl(
