@@ -3,8 +3,11 @@
 #' @inheritParams default_params_doc
 #' @export
 get_gene_names_from_human_gene_ids <- function(# nolint keep long descriptive function name
+  gene_ids,
   verbose = FALSE
 ) {
+  # Must have at least 2 gene_ids for purrr to work
+  testthat::expect_true(length(gene_ids) > 1)
   membrane_proteins_info <- rentrez::entrez_summary(
     db = "gene",
     id = gene_ids,

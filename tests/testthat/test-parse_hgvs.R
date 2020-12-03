@@ -41,6 +41,4 @@ test_that("use", {
     parse_hgvs(s = "NP_001180552.1:p.Pro27del"),
     "Do no accept deletions"
   )
-
-
 })

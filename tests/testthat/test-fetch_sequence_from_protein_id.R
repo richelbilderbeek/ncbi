@@ -3,7 +3,7 @@ test_that("use", {
   sequence <- fetch_sequence_from_protein_id(protein_id = "901695856")
   expect_equal(
     names(sequence),
-    "pdb|4ZW9|A Chain A, Solute carrier family 2, facilitated glucose transporter member 3" # nolint indeed a long line
+    "pdb|4ZW9|A Crystal structure of human GLUT3 bound to D-glucose in the outward-occluded conformation at 1.5 angstrom" # nolint indeed a long line
   )
   regexp <- paste0("[", paste0(Peptides::aaList(), collapse = ""), "]+")
   expect_match(
