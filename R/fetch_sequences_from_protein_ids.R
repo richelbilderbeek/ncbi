@@ -5,7 +5,7 @@
 #' @return a character vector with protein sequences,
 #'   one per protein ID
 #' @export
-fetch_sequences_from_protein_ids <- function(
+fetch_sequences_from_protein_ids <- function( # nolint indeed a long function name
   protein_ids,
   verbose = FALSE
 ) {
