@@ -7,6 +7,9 @@
 fetch_sequences_from_protein_ids(protein_ids, verbose = FALSE)
 }
 \arguments{
+\item{protein_ids}{one or more protein IDs.
+For example, \code{NP_001007554.1} is a protein ID.}
+
 \item{verbose}{set to TRUE for more output}
 }
 \value{

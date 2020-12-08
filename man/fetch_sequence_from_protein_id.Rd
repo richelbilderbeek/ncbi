@@ -7,7 +7,8 @@
 fetch_sequence_from_protein_id(protein_id, verbose = FALSE)
 }
 \arguments{
-\item{protein_id}{ID of a protein}
+\item{protein_id}{ID of a protein.
+For example, \code{NP_001007554.1} is a protein ID.}
 
 \item{verbose}{set to TRUE for more output}
 }

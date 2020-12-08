@@ -12,6 +12,7 @@ default_params_doc(
   gene_name,
   hgvs,
   protein_id,
+  protein_ids,
   snp_id,
   subject_ids,
   variation,
@@ -30,7 +31,11 @@ default_params_doc(
 
 \item{hgvs}{a variation in HGVS ('Human Genome Variation Society') format}
 
-\item{protein_id}{ID of a protein}
+\item{protein_id}{ID of a protein.
+For example, \code{NP_001007554.1} is a protein ID.}
+
+\item{protein_ids}{one or more protein IDs.
+For example, \code{NP_001007554.1} is a protein ID.}
 
 \item{snp_id}{the ID of a SNP}
 

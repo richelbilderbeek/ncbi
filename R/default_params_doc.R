@@ -5,7 +5,10 @@
 #' @param gene_ids one or more IDs of a gene
 #' @param gene_name name of a gene
 #' @param hgvs a variation in HGVS ('Human Genome Variation Society') format
-#' @param protein_id ID of a protein
+#' @param protein_id ID of a protein.
+#'   For example, \code{NP_001007554.1} is a protein ID.
+#' @param protein_ids one or more protein IDs.
+#'   For example, \code{NP_001007554.1} is a protein ID.
 #' @param snp_id the ID of a SNP
 #' @param subject_ids one of more IDs of a subject
 #' @param variation one variation.
@@ -24,6 +27,7 @@ default_params_doc <- function(
   gene_name,
   hgvs,
   protein_id,
+  protein_ids,
   snp_id,
   subject_ids,
   variation,
