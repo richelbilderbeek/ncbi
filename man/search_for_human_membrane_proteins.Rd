@@ -6,6 +6,9 @@
 \usage{
 search_for_human_membrane_proteins(verbose = FALSE)
 }
+\arguments{
+\item{verbose}{set to TRUE for more output}
+}
 \description{
 Get the IDs of human membrane proteins.
 }

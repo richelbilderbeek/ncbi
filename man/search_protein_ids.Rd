@@ -8,6 +8,8 @@ search_protein_ids(accession, verbose = FALSE)
 }
 \arguments{
 \item{accession}{protein accession (?), for example, \code{4ZW9}.}
+
+\item{verbose}{set to TRUE for more output}
 }
 \description{
 Search for the ID of a human protein.

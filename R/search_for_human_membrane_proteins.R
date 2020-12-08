@@ -1,4 +1,5 @@
 #' Get the IDs of human membrane proteins.
+#' @inheritParams default_params_doc
 #' @seealso
 #' Search terms are documented at
 #' \url{https://www.ncbi.nlm.nih.gov/books/NBK25499/#_chapter4_ESearch_}.

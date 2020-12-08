@@ -1,6 +1,7 @@
 #' Search for a protein its ID
 #'
 #' Search for the ID of a human protein.
+#' @inheritParams default_params_doc
 #' @param accession protein accession (?), for example, \code{4ZW9}.
 #' @seealso
 #' Search terms are documented at
