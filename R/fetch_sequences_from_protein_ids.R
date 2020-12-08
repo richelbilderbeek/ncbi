@@ -26,7 +26,7 @@ fetch_sequences_from_protein_ids <- function(
   )
   fasta_filename <- tempfile()
   readr::write_lines(x = fasta_raw, file = fasta_filename)
-  t <- tmhmm::parse_fasta_file(fasta_filename = fasta_filename)
+  t <- pureseqtmr::load_fasta_file_as_tibble(fasta_filename = fasta_filename)
   seqs <- t$sequence
   names(seqs) <- t$name
   seqs

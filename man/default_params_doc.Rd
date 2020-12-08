@@ -14,6 +14,8 @@ default_params_doc(
   protein_id,
   snp_id,
   subject_ids,
+  variation,
+  variations,
   verbose
 )
 }
@@ -33,6 +35,12 @@ default_params_doc(
 \item{snp_id}{the ID of a SNP}
 
 \item{subject_ids}{one of more IDs of a subject}
+
+\item{variation}{one variation.
+For example, \code{NP_009089.4:p.Val723Gly} is a variation.}
+
+\item{variations}{one or more variations.
+For example, \code{NP_009089.4:p.Val723Gly} is a variation.}
 
 \item{verbose}{set to TRUE for more output}
 }

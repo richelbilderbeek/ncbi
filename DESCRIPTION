@@ -15,6 +15,7 @@ Imports:
     ape,
     cobaltr,
     devtools,
+    httr,
     jsonlite,
     Peptides,
     pureseqtmr,
@@ -23,8 +24,7 @@ Imports:
     rentrez,
     seqinr,
     stringr,
-    tibble,
-    tmhmm
+    tibble
 Suggests:
     bio3d,
     knitr,

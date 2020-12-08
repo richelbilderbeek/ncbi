@@ -6,6 +6,10 @@
 \usage{
 extract_protein_ids_from_variations(variations)
 }
+\arguments{
+\item{variations}{one or more variations.
+For example, \code{NP_009089.4:p.Val723Gly} is a variation.}
+}
 \description{
 Extract the protein IDs from variations
 }

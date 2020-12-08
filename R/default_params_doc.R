@@ -8,6 +8,10 @@
 #' @param protein_id ID of a protein
 #' @param snp_id the ID of a SNP
 #' @param subject_ids one of more IDs of a subject
+#' @param variation one variation.
+#'   For example, \code{NP_009089.4:p.Val723Gly} is a variation.
+#' @param variations one or more variations.
+#'   For example, \code{NP_009089.4:p.Val723Gly} is a variation.
 #' @param verbose set to TRUE for more output
 #' @author Richèl J.C. Bilderbeek
 #' @note This is an internal function, so it should be marked with
@@ -22,6 +26,8 @@ default_params_doc <- function(
   protein_id,
   snp_id,
   subject_ids,
+  variation,
+  variations,
   verbose
 ) {
   # Nothing
