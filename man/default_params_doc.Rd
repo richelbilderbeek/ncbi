@@ -6,6 +6,7 @@
 documentation.}
 \usage{
 default_params_doc(
+  chunk_size,
   fasta_file,
   fasta_text,
   gene_ids,
@@ -21,6 +22,9 @@ default_params_doc(
 )
 }
 \arguments{
+\item{chunk_size}{the number of protein IDs in an NCBI quey.
+Too many values results in an NCBI API error}
+
 \item{fasta_file}{name of a FASTA file}
 
 \item{fasta_text}{text in the same format as a FASTA file}

@@ -3,9 +3,6 @@
 #'
 #' Fetch the protein sequence using one or more protein IDs
 #' @inheritParams default_params_doc
-#' @param chunk_size the number of protein IDs in an NCBI quey.
-#'   Too many values results in an NCBI API error
-#' @param n the maximum number of protein IDs
 #' @return a character vector with protein sequences,
 #'   one per protein ID
 #' @export

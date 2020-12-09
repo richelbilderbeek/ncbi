@@ -6,6 +6,9 @@
 \usage{
 are_all_unique(x)
 }
+\arguments{
+\item{x}{the elements to be tested}
+}
 \description{
 Tests if all elements are unique
 }

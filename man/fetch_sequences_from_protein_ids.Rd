@@ -14,6 +14,9 @@ fetch_sequences_from_protein_ids(
 \item{protein_ids}{one or more protein IDs.
 For example, \code{NP_001007554.1} is a protein ID.}
 
+\item{chunk_size}{the number of protein IDs in an NCBI quey.
+Too many values results in an NCBI API error}
+
 \item{verbose}{set to TRUE for more output}
 }
 \value{

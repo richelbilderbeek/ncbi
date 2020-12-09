@@ -1,5 +1,7 @@
 #' This function does nothing. It is intended to inherit is parameters'
 #' documentation.
+#' @param chunk_size the number of protein IDs in an NCBI quey.
+#'   Too many values results in an NCBI API error
 #' @param fasta_file name of a FASTA file
 #' @param fasta_text text in the same format as a FASTA file
 #' @param gene_ids one or more IDs of a gene
@@ -21,6 +23,7 @@
 #'   \code{@noRd}. This is not done, as this will disallow all
 #'   functions to find the documentation parameters
 default_params_doc <- function(
+  chunk_size,
   fasta_file,
   fasta_text,
   gene_ids,

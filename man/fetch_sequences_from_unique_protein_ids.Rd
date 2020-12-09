@@ -18,8 +18,6 @@ For example, \code{NP_001007554.1} is a protein ID.}
 Too many values results in an NCBI API error}
 
 \item{verbose}{set to TRUE for more output}
-
-\item{n}{the maximum number of protein IDs}
 }
 \value{
 a character vector with protein sequences,
