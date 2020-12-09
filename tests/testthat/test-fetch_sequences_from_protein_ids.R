@@ -33,3 +33,16 @@ test_that("verbose error", {
     )
   )
 })
+
+test_that("Large requests are handled nicely as well", {
+  Sys.sleep(1)
+  protein_ids_filename <- system.file(
+    "extdata", "protein_ids.csv", package = "ncbi"
+  )
+  protein_ids <- readr::read_csv(
+    file = protein_ids_filename,
+    col_types = readr::cols(protein_id = readr::col_character())
+  )$protein_id
+  sequences <- fetch_sequences_from_protein_ids(protein_ids = protein_ids)
+  expect_equal(0, sum(is.na(sequences)))
+})

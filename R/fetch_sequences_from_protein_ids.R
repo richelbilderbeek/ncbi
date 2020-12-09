@@ -7,27 +7,27 @@
 #' @export
 fetch_sequences_from_protein_ids <- function( # nolint indeed a long function name
   protein_ids,
+  chunk_size = 100,
   verbose = FALSE
 ) {
-  fasta_raw <- NA
-  tryCatch({
-    fasta_raw <- rentrez::entrez_fetch(
-      id = protein_ids,
-      db = "protein",
-      rettype = "fasta",
-      config = httr::config(verbose = verbose)
-    )
-    }, error = function(e) {
-      stop(
-        "Error for protein IDs '", paste0(protein_ids, collapse = " "), "': ",
-        e
-      )
-    }
+  t_1 <- tibble::tibble(
+    protein_id = protein_ids
   )
-  fasta_filename <- tempfile()
-  readr::write_lines(x = fasta_raw, file = fasta_filename)
-  t <- pureseqtmr::load_fasta_file_as_tibble(fasta_filename = fasta_filename)
-  seqs <- t$sequence
-  names(seqs) <- t$name
-  seqs
+  t_2 <- tibble::tibble(
+    protein_id = unique(protein_ids),
+    sequence = NA
+  )
+  t_2$sequence <- fetch_sequences_from_unique_protein_ids(
+    protein_ids = t_2$protein_id,
+    chunk_size = chunk_size,
+    verbose = verbose
+  )
+  t_3 <- dplyr::left_join(t_1, t_2, by = "protein_id")
+
+  # Protein IDs are preserved
+  testthat::expect_equal(
+    t_1$protein_id,
+    t_3$protein_id
+  )
+  t_3$sequence
 }
