@@ -9,37 +9,37 @@ parse_hgvs <- function(s) {
     s, "^.*:p.[A-Z][a-z]{1,2}[[:digit:]]+fs$"
   )
   if (length(frame_shift_match) != 0) {
-    stop("Do no accept frame shifts, in sequence '", s, "'")
+    stop("Do not accept frame shifts, in sequence '", s, "'")
   }
   extensions_shift_match <- stringr::str_subset(
     s, "^.*:p\\..*ext.*$"
   )
   if (length(extensions_shift_match) != 0) {
-    stop("Do no accept extensions, in sequence '", s, "'")
+    stop("Do not accept extensions, in sequence '", s, "'")
   }
   delins_match <- stringr::str_subset(
     s, "^.*:p\\..*delins.*$"
   )
   if (length(delins_match) != 0) {
-    stop("Do no accept delins, in sequence '", s, "'")
+    stop("Do not accept delins, in sequence '", s, "'")
   }
   ins_match <- stringr::str_subset(
     s, "^.*:p\\..*ins.*$"
   )
   if (length(ins_match) != 0) {
-    stop("Do no accept insertions, in sequence '", s, "'")
+    stop("Do not accept insertions, in sequence '", s, "'")
   }
   del_match <- stringr::str_subset(
     s, "^.*:p\\..*del$"
   )
   if (length(del_match) != 0) {
-    stop("Do no accept deletions, in sequence '", s, "'")
+    stop("Do not accept deletions, in sequence '", s, "'")
   }
   dup_match <- stringr::str_subset(
     s, "^.*:p\\..*dup$"
   )
   if (length(dup_match) != 0) {
-    stop("Do no accept duplications, in sequence '", s, "'")
+    stop("Do not accept duplications, in sequence '", s, "'")
   }
 
 

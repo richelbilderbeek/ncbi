@@ -17,34 +17,34 @@ test_that("use", {
 test_that("use", {
   expect_error(
     parse_hgvs(s = "NP_000585.2:p.Pro84fs"),
-    "Do no accept frame shifts"
+    "Do not accept frame shifts"
   )
 
   expect_error(
     parse_hgvs(s = "NP_068743.3:p.Ter846TyrextTer?"),
-    "Do no accept extensions"
+    "Do not accept extensions"
   )
 
   expect_error(
     parse_hgvs(s = "NP_001172112.1:p.Arg249delinsThrGluArgTer"),
-    "Do no accept delins"
+    "Do not accept delins"
   )
 
   expect_error(
     parse_hgvs(
       s = "NP_055640.2:p.Leu2235_Leu2236insArgLeuGlyAlaGlnArgProAspThr"
     ),
-    "Do no accept insertions"
+    "Do not accept insertions"
   )
 
   expect_error(
     parse_hgvs(s = "NP_001180552.1:p.Pro27del"),
-    "Do no accept deletions"
+    "Do not accept deletions"
   )
 
   expect_error(
     parse_hgvs(s = "NP_056980.2:p.Leu292dup"),
-    "Do no accept duplications"
+    "Do not accept duplications"
   )
 
 })
