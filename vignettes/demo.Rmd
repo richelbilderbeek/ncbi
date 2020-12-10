@@ -62,7 +62,7 @@ In R, we
 Fetch the protein sequence from the protein ID:
 
 ```{r}
-sequence <- unname(fetch_sequence_from_protein_id(id))
+sequence <- sprentrez::fetch_sequence_from_protein_id(id)
 sequence
 ```
 

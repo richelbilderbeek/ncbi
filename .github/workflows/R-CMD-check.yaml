@@ -23,6 +23,7 @@ jobs:
         run: |
           install.packages(c("remotes", "rcmdcheck"))
           remotes::install_github("richelbilderbeek/cobaltr")
+          remotes::install_github("richelbilderbeek/sprentrez")
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
           remotes::install_cran("covr")
