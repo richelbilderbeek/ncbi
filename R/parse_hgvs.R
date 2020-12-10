@@ -35,6 +35,13 @@ parse_hgvs <- function(s) {
   if (length(del_match) != 0) {
     stop("Do no accept deletions, in sequence '", s, "'")
   }
+  dup_match <- stringr::str_subset(
+    s, "^.*:p\\..*dup$"
+  )
+  if (length(dup_match) != 0) {
+    stop("Do no accept duplications, in sequence '", s, "'")
+  }
+
 
   m <- stringr::str_match(
     s, "^(.*):p.([A-Z][a-z]{1,2})([[:digit:]]+)(\\=|[A-Z][a-z]{1,2})$")
