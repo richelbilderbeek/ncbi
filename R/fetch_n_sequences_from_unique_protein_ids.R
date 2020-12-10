@@ -46,4 +46,3 @@ fetch_n_sequences_from_unique_protein_ids <- function( # nolint indeed a long fu
   names(seqs) <- t$name
   seqs
 }
-
