@@ -42,6 +42,13 @@ parse_hgvs <- function(s) {
     stop("Do not accept duplications, in sequence '", s, "'")
   }
 
+  rep_seq_match <- stringr::str_subset(
+    s, "^.*:p\\..*_.*$"
+  )
+  if (length(rep_seq_match) != 0) {
+    stop("Do not accept repeated sequences, in sequence '", s, "'")
+  }
+
 
   m <- stringr::str_match(
     s, "^(.*):p.([A-Z][a-z]{1,2})([[:digit:]]+)(\\=|[A-Z][a-z]{1,2})$")

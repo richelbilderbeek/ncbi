@@ -47,4 +47,9 @@ test_that("use", {
     "Do not accept duplications"
   )
 
+  expect_error(
+    parse_hgvs(s = "NP_001288667.1:p.Leu58_Leu59="),
+    "Do not accept repeated sequences"
+  )
+
 })
