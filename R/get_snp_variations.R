@@ -5,12 +5,23 @@
 #' SNP ID \code{1466623805}, see
 #' \url{https://api.ncbi.nlm.nih.gov/variation/v0/beta/refsnp/1466623805})
 #' @export
-get_snp_variations <- function(snp_id) {
+get_snp_variations <- function(
+  snp_id,
+  verbose = FALSE
+) {
   ncbi::check_snp_id(snp_id)
   url <- paste0(
     "https://api.ncbi.nlm.nih.gov/variation/v0/beta/refsnp/",
-    snp_id
+    format(x = snp_id, scientific = FALSE)
   )
+  if (verbose) {
+    message("url: '", url, "'")
+  }
+
+  # No scientific notation, such as SNP ID 1596000000
+  # being converted to 1.596e+09 in URL
+  testthat::expect_false(stringr::str_detect(string = url, pattern = "\\+"))
+
   json <- character(0)
   while (length(json) == 0) {
     try({

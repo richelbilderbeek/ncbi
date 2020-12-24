@@ -4,10 +4,12 @@
 \alias{get_snp_variations}
 \title{Get all variations for a SNP}
 \usage{
-get_snp_variations(snp_id)
+get_snp_variations(snp_id, verbose = FALSE)
 }
 \arguments{
 \item{snp_id}{the ID of a SNP}
+
+\item{verbose}{set to TRUE for more output}
 }
 \value{
 a character vector with variations.
