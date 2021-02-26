@@ -2,7 +2,12 @@ test_that("use", {
   expect_true(is_snp("NP_001771.1:p.Ser91Pro"))
   expect_true(is_snp("NP_001254627.1:p.Val237Met"))
   expect_true(is_snp("NP_055635.3:p.Ala55Gly"))
+  expect_true(is_snp("NP_005124.1:p.Ter330Cys"))
   expect_false(is_snp("NP_001771.1:p.Leu64_Gly74del"))
   expect_false(is_snp(s = "NP_001771.1:p.Phe89="))
   expect_false(is_snp("NP_001771.1:p.Asp167fs"))
+  expect_false(is_snp("NP_001225.1:p.Ter152LysextTer?"))
+  expect_false(is_snp("NP_001237.1:p.Gly98delinsAlaLeuHisProValTer"))
+
+
 })
