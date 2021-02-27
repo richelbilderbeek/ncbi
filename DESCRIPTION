@@ -14,26 +14,22 @@ RoxygenNote: 7.1.1
 Depends:
     R (>= 3.5.0)
 Imports:
-    ape,
     cobaltr,
-    devtools,
-    dplyr,
     httr,
     jsonlite,
-    Peptides,
     pureseqtmr,
     purrr,
-    readr,
     rentrez,
-    seqinr,
     sprentrez,
-    stringr,
-    tibble
+    stringr
 Suggests:
     bio3d,
     knitr,
+    readr,
     rmarkdown,
-    testthat
+    seqinr,
+    testthat,
+    tibble
 VignetteBuilder: knitr
 URL: https://github.com/richelbilderbeek/ncbi/
 BugReports: https://github.com/richelbilderbeek/ncbi/issues
