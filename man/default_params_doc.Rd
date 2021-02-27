@@ -14,6 +14,7 @@ default_params_doc(
   hgvs,
   protein_id,
   protein_ids,
+  s,
   snp_id,
   subject_ids,
   variation,
@@ -41,6 +42,9 @@ For example, \code{NP_001007554.1} is a protein ID.}
 \item{protein_ids}{one or more protein IDs.
 For example, \code{NP_001007554.1} is a protein ID.}
 
+\item{s}{string in HVGS format to be parsed,
+for example, \code{NP_000585.2:p.Gly144Asp}}
+
 \item{snp_id}{the ID of a SNP}
 
 \item{subject_ids}{one of more IDs of a subject}
@@ -52,9 +56,6 @@ For example, \code{NP_009089.4:p.Val723Gly} is a variation.}
 For example, \code{NP_009089.4:p.Val723Gly} is a variation.}
 
 \item{verbose}{set to TRUE for more output}
-
-\item{s}{string in HVGS format to be parsed,
-for example, \code{NP_000585.2:p.Gly144Asp}}
 }
 \description{
 This function does nothing. It is intended to inherit is parameters'

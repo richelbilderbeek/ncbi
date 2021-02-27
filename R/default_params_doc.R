@@ -33,6 +33,7 @@ default_params_doc <- function(
   hgvs,
   protein_id,
   protein_ids,
+  s,
   snp_id,
   subject_ids,
   variation,
