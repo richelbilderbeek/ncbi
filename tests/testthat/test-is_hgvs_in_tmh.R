@@ -1,5 +1,5 @@
 test_that("use", {
-  expect_false(is_hgvs_in_tmh("NP_000585.2:p.Gly144Asp"))
+  expect_false(is_hgvs_in_tmh(hgvs = "NP_000585.2:p.Gly144Asp"))
 })
 
 test_that("use", {

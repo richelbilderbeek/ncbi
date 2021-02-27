@@ -14,9 +14,11 @@ default_params_doc(
   hgvs,
   protein_id,
   protein_ids,
+  pureseqtm_folder_name,
   s,
   snp_id,
   subject_ids,
+  temp_fasta_filename,
   variation,
   variations,
   verbose
@@ -42,12 +44,17 @@ For example, \code{NP_001007554.1} is a protein ID.}
 \item{protein_ids}{one or more protein IDs.
 For example, \code{NP_001007554.1} is a protein ID.}
 
+\item{pureseqtm_folder_name}{PureseqTM folder name,
+as can be obtained by \link[pureseqtmr]{get_default_pureseqtm_folder}.}
+
 \item{s}{string in HVGS format to be parsed,
 for example, \code{NP_000585.2:p.Gly144Asp}}
 
 \item{snp_id}{the ID of a SNP}
 
 \item{subject_ids}{one of more IDs of a subject}
+
+\item{temp_fasta_filename}{name for a temporary FASTA file}
 
 \item{variation}{one variation.
 For example, \code{NP_009089.4:p.Val723Gly} is a variation.}

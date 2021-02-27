@@ -4,12 +4,22 @@
 \alias{is_hgvs_in_tmh}
 \title{Determine if a HGVS is a mutation in a TMH part of membrane protein}
 \usage{
-is_hgvs_in_tmh(hgvs, verbose = FALSE)
+is_hgvs_in_tmh(
+  hgvs,
+  verbose = FALSE,
+  pureseqtm_folder_name = pureseqtmr::get_default_pureseqtm_folder(),
+  temp_fasta_filename = tempfile(fileext = ".fasta")
+)
 }
 \arguments{
 \item{hgvs}{a variation in HGVS ('Human Genome Variation Society') format}
 
 \item{verbose}{set to TRUE for more output}
+
+\item{pureseqtm_folder_name}{PureseqTM folder name,
+as can be obtained by \link[pureseqtmr]{get_default_pureseqtm_folder}.}
+
+\item{temp_fasta_filename}{name for a temporary FASTA file}
 }
 \description{
 Determine if a HGVS is a mutation in a TMH part of membrane protein

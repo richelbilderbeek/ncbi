@@ -3,7 +3,9 @@
 #' @export
 is_hgvs_in_tmh <- function(
   hgvs,
-  verbose = FALSE
+  verbose = FALSE,
+  pureseqtm_folder_name = pureseqtmr::get_default_pureseqtm_folder(),
+  temp_fasta_filename = tempfile(fileext = ".fasta")
 ) {
 
   if (length(hgvs) == 0) {
@@ -24,6 +26,9 @@ is_hgvs_in_tmh <- function(
   )
   Sys.sleep(1)
   protein_id <- protein_info$ids
+  if (verbose) {
+    message("protein_id: ", protein_id)
+  }
   # Get the protein sequence as a FASTA text
   protein_fasta <- rentrez::entrez_fetch(
     db = "protein",
@@ -33,12 +38,18 @@ is_hgvs_in_tmh <- function(
   )
   Sys.sleep(1)
   testthat::expect_equal(1, length(protein_fasta))
+  if (verbose) {
+    message("protein_fasta: \n", protein_fasta)
+  }
 
   protein_text <- stringr::str_split(protein_fasta, "\n")[[1]]
 
   testthat::expect_true(length(protein_text) >= 2)
+
   topology <- pureseqtmr::predict_topology_from_sequence(
-    protein_sequence = paste0(protein_text[-1], collapse = "")
+    protein_sequence = paste0(protein_text[-1], collapse = ""),
+    folder_name = pureseqtm_folder_name,
+    temp_fasta_filename = temp_fasta_filename
   )
   if (is.na(stringr::str_match(topology, "1"))) {
     stop("This protein is not predicted to be a membrane protein")

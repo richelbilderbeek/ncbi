@@ -11,10 +11,13 @@
 #'   For example, \code{NP_001007554.1} is a protein ID.
 #' @param protein_ids one or more protein IDs.
 #'   For example, \code{NP_001007554.1} is a protein ID.
+#' @param pureseqtm_folder_name PureseqTM folder name,
+#'   as can be obtained by \link[pureseqtmr]{get_default_pureseqtm_folder}.
 #' @param s string in HVGS format to be parsed,
 #'   for example, \code{NP_000585.2:p.Gly144Asp}
 #' @param snp_id the ID of a SNP
 #' @param subject_ids one of more IDs of a subject
+#' @param temp_fasta_filename name for a temporary FASTA file
 #' @param variation one variation.
 #'   For example, \code{NP_009089.4:p.Val723Gly} is a variation.
 #' @param variations one or more variations.
@@ -33,9 +36,11 @@ default_params_doc <- function(
   hgvs,
   protein_id,
   protein_ids,
+  pureseqtm_folder_name,
   s,
   snp_id,
   subject_ids,
+  temp_fasta_filename,
   variation,
   variations,
   verbose
