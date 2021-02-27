@@ -7,7 +7,8 @@
 parse_hgvs(s)
 }
 \arguments{
-\item{s}{string in HVGS format to be parsed}
+\item{s}{string in HVGS format to be parsed,
+for example, \code{NP_000585.2:p.Gly144Asp}}
 }
 \value{
 the variation as a list

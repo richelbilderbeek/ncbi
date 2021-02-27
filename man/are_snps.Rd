@@ -7,6 +7,10 @@ This is the vectorized version of \link{is_snp}}
 \usage{
 are_snps(s)
 }
+\arguments{
+\item{s}{string in HVGS format to be parsed,
+for example, \code{NP_000585.2:p.Gly144Asp}}
+}
 \description{
 Determine if the one or more strings are a SNP in HGVS sequence.
 This is the vectorized version of \link{is_snp}

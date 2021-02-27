@@ -52,6 +52,9 @@ For example, \code{NP_009089.4:p.Val723Gly} is a variation.}
 For example, \code{NP_009089.4:p.Val723Gly} is a variation.}
 
 \item{verbose}{set to TRUE for more output}
+
+\item{s}{string in HVGS format to be parsed,
+for example, \code{NP_000585.2:p.Gly144Asp}}
 }
 \description{
 This function does nothing. It is intended to inherit is parameters'

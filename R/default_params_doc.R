@@ -11,6 +11,8 @@
 #'   For example, \code{NP_001007554.1} is a protein ID.
 #' @param protein_ids one or more protein IDs.
 #'   For example, \code{NP_001007554.1} is a protein ID.
+#' @param s string in HVGS format to be parsed,
+#'   for example, \code{NP_000585.2:p.Gly144Asp}
 #' @param snp_id the ID of a SNP
 #' @param subject_ids one of more IDs of a subject
 #' @param variation one variation.

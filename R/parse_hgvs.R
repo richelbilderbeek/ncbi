@@ -1,5 +1,5 @@
 #' Parse a HGVS variation description
-#' @param s string in HVGS format to be parsed
+#' @inheritParams default_params_doc
 #' @note see \url{http://varnomen.hgvs.org/} for the HGVS format
 #' @return the variation as a list
 #' @export

@@ -6,6 +6,10 @@
 \usage{
 is_snp(s)
 }
+\arguments{
+\item{s}{string in HVGS format to be parsed,
+for example, \code{NP_000585.2:p.Gly144Asp}}
+}
 \description{
 Determine if the string is a SNP in HGVS sequence
 }
