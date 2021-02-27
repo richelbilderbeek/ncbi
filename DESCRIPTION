@@ -17,7 +17,7 @@ Imports:
     cobaltr,
     httr,
     jsonlite,
-    pureseqtmr,
+    pureseqtmr (>= 1.3),
     purrr,
     rentrez,
     sprentrez,
