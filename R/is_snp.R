@@ -21,7 +21,9 @@ is_snp <- function(s) {
   is_valid <- FALSE
   tryCatch({
     hgvs <- ncbi::parse_hgvs(s)
-    is_valid <- hgvs$from != hgvs$to
+    is_valid <- hgvs$from != hgvs$to &&
+      hgvs$from != "Ter" &&
+      hgvs$to != "Ter"
   }, error = function(e) {} # nolint no worries
   )
   is_valid
