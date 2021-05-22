@@ -24,6 +24,7 @@ Imports:
 Suggests:
     bio3d,
     knitr,
+    markdown,
     readr,
     rmarkdown,
     seqinr,
