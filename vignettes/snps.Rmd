@@ -52,7 +52,8 @@ gene_names <- get_gene_names_from_human_gene_ids(gene_ids)
 In this example, we'll use the TNF gene.
 
 ```{r}
-gene_name <- gene_names[2]
+testthat::expect_true("TNF" %in% gene_names)
+gene_name <- "TNF"
 testthat::expect_equal("TNF", gene_name)
 ```
 
@@ -71,11 +72,11 @@ head(snp_ids)
 
 ## From a SNP, that is not translated
 
-We'll use the first SNP ID, 1583051968:
+We'll use the SNP ID, 1583051968:
 
 ```{r}
-testthat::expect_equal("1583051968", snp_ids[1])
-hgvs <- get_snp_variations_in_protein_from_snp_id(snp_ids[1])
+testthat::expect_true("1583051968" %in% snp_ids)
+hgvs <- get_snp_variations_in_protein_from_snp_id("1583051968")
 tryCatch(is_hgvs_in_tmh(hgvs), error = function(e) print(e))
 ```
 
@@ -96,11 +97,11 @@ As the report shows no green (nor red, nor blue) band, means that this SNP does 
 
 ## From a SNP, that is transcripted
 
-We'll use the fifth SNP ID, 1583051188:
+We'll use another SNP ID, 1583051188:
 
 ```{r}
-testthat::expect_equal("1583051188", snp_ids[5])
-hgvs <- get_snp_variations_in_protein_from_snp_id(snp_ids[5])
+testthat::expect_true("1583051188" %in% snp_ids)
+hgvs <- get_snp_variations_in_protein_from_snp_id("1583051188")
 tryCatch(is_hgvs_in_tmh(hgvs), error = function(e) print(e))
 ```
 
@@ -110,10 +111,10 @@ At NCBI website, at [https://www.ncbi.nlm.nih.gov/snp/rs1583051188](https://www.
 
 ## From a SNP, that is transcripted and translated into indentical protein
 
-We'll use the sevent SNP ID, 1583050033:
+We'll use another SNP ID, 1583050033:
 
 ```{r}
-testthat::expect_equal("1583050033", snp_ids[7])
+testthat::expect_true("1583050033" %in% snp_ids)
 ```
 
 At [https://www.ncbi.nlm.nih.gov/snp/rs1583050033](https://www.ncbi.nlm.nih.gov/snp/rs1583050033) one can see there is a protein
@@ -129,7 +130,7 @@ SNP acts on the 196 amino acid.
 Now, to do the same thing from R:
 
 ```{r}
-hgvs <- get_snp_variations_in_protein_from_snp_id(snp_ids[7])
+hgvs <- get_snp_variations_in_protein_from_snp_id("1583050033")
 tryCatch(is_hgvs_in_tmh(hgvs), error = function(e) print(e))
 ```
 
@@ -137,15 +138,15 @@ The error message is clear: the SNP did not cause a mutation in the protein.
 
 ## From a SNP, that is transcripted and translated into indentical protein
 
-We'll use the eight SNP ID, `1583049783`:
+We'll use another SNP ID, `1583049783`:
 
 Here the protein is actually changed.
 
 From this variation, we now measure where in the protein the mutation occurs:
 
 ```{r}
-testthat::expect_equal("1583049783", snp_ids[8])
-hgvs <- get_snp_variations_in_protein_from_snp_id(snp_ids[8])
+testthat::expect_true("1583049783" %in% snp_ids)
+hgvs <- get_snp_variations_in_protein_from_snp_id("1583049783")
 in_in_tmh <- NA
 tryCatch(in_in_tmh <- is_hgvs_in_tmh(hgvs), error = function(e) print(e))
 in_in_tmh
