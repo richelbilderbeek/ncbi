@@ -1,5 +1,5 @@
 test_that("use", {
-  Sys.sleep(1)
+  Sys.sleep(2)
   ids <- search_protein_ids(accession = "4ZW9")
   expect_equal(ids, "901695856")
 })
@@ -27,7 +27,7 @@ test_that("use", {
     id <- search_protein_ids(accession = accession)
     message(paste0(id, collapse = " "))
     expect_true(length(id) > 0)
-    Sys.sleep(1)
+    Sys.sleep(2)
   }
   # Result:
   #
