@@ -19,7 +19,6 @@ Imports:
     pureseqtmr (>= 1.3),
     purrr,
     rentrez,
-    sprentrez,
     stringr
 Suggests:
     bio3d,
@@ -28,6 +27,7 @@ Suggests:
     readr,
     rmarkdown,
     seqinr,
+    sprentrez,
     testthat,
     tibble
 VignetteBuilder: knitr
