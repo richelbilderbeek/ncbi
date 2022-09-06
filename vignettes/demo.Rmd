@@ -33,6 +33,7 @@ set.seed(42)
 Either go to [https://www.ncbi.nlm.nih.gov/protein?term=(membrane%20protein)%20AND%20homo%20sapiens%5BPrimary%20Organism%5D](https://www.ncbi.nlm.nih.gov/protein?term=(membrane%20protein)%20AND%20homo%20sapiens%5BPrimary%20Organism%5D) or run:
 
 ```{r}
+Sys.sleep(1)
 ids <- search_for_human_membrane_proteins()
 ids
 ```
