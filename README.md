@@ -24,5 +24,3 @@ My notes on using the NCBI data, from website and using R.
    [R script](scripts/from_protein_to_msa_of_related_proteins.R)
    [YouTube](https://youtu.be/TGA6_4i-xTo)
    [download (.ogv)](http://richelbilderbeek.nl/ncbi_protein_name_to_related_msa.ogv)
-
-
