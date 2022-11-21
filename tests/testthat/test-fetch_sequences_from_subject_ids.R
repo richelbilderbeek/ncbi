@@ -1,5 +1,5 @@
 test_that("use", {
-  Sys.sleep(4)
+  Sys.sleep(10)
   sequence <- fetch_sequences_from_subject_ids(subject_ids = "4ZW9_A")
   fasta_filename <- tempfile()
   readr::write_lines(sequence, fasta_filename)
